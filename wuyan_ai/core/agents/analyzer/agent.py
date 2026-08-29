@@ -18,7 +18,7 @@ from ._prompts import SYSTEM_PROMPT, build_user_prompt
 
 logger = logging.getLogger(__name__)
 
-_MAX_CANDIDATES_PER_TYPE = 10
+_MAX_CANDIDATES_PER_TYPE = 5
 
 
 async def analyze_request(request: LocalFoodRequest) -> DnaStrategyBrief:

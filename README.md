@@ -33,7 +33,7 @@
 ```text
 产品信息 + 可选图片
         ↓
-Analyzer：理解产品，召回每个维度 Top 10，选择 6 条 DNA，提炼核心卖点
+Analyzer：理解产品，召回每个维度 Top 5，选择 6 条 DNA，提炼核心卖点
         ↓
 Creator：根据 DNA 组合生成标题、正文、标签和配图建议
         ↓
@@ -55,7 +55,7 @@ Creator：根据 DNA 组合生成标题、正文、标签和配图建议
 | `tone` | 用什么口吻表达 | 20 |
 | `visualStyle` | 图片怎么拍、怎么排序 | 20 |
 
-当前版本预置 6 个 JSON 文件，共 120 条 DNA 素材。用户输入产品信息后，系统按每个维度的 `score` 召回 Top 10，再由一次 LLM 调用从每个维度各选择 1 条，最后交给 Creator 生成内容。
+当前版本预置 6 个 JSON 文件，共 120 条 DNA 素材。用户输入产品信息后，系统按每个维度的 `score` 召回 Top 5，再由一次 LLM 调用从每个维度各选择 1 条，最后交给 Creator 生成内容。
 
 ## 素材来源与合规边界
 
@@ -139,18 +139,18 @@ Creator：根据 DNA 组合生成标题、正文、标签和配图建议
 
 > 新品椒麻鸡，人均 32 元，主要想吸引附近下班后的年轻人到店。
 
-系统会根据素材分数，为 6 个维度分别召回 Top 10 候选：
+系统会根据素材分数，为 6 个维度分别召回 Top 5 候选：
 
 ```text
-scene：Top 10
-valuePromise：Top 10
-hook：Top 10
-structure：Top 10
-tone：Top 10
-visualStyle：Top 10
+scene：Top 5
+valuePromise：Top 5
+hook：Top 5
+structure：Top 5
+tone：Top 5
+visualStyle：Top 5
 ```
 
-一次 LLM 调用会综合产品信息和这 60 条候选，为每个维度各选出 1 条最合适的 DNA。被选中的 6 条 DNA 会同时提供给 Creator，用来指导标题角度、正文结构、表达语气和配图方向。
+一次 LLM 调用会综合产品信息和这 30 条候选，为每个维度各选出 1 条最合适的 DNA。被选中的 6 条 DNA 会同时提供给 Creator，用来指导标题角度、正文结构、表达语气和配图方向。
 
 DNA 分数未来主要由三个维度组成：
 
@@ -204,7 +204,7 @@ Analyzer 返回的 6 条 DNA 会组成一份策略简报，Creator 根据这份�
 ### Analyzer：策略分析
 
 - 输入：产品文字、目标人群、销售场景和可选图片
-- 召回：每个 DNA 维度的 Top 10 候选
+- 召回：每个 DNA 维度的 Top 5 候选
 - 输出：6 条选中的 DNA、核心卖点、避坑提醒、图片摘要和视觉方向
 
 ### Creator：内容生成
