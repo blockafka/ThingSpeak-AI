@@ -312,6 +312,14 @@ wuyan-ai/
 └── start_server.sh             # 后端启动脚本
 ```
 
+## 宣传海报
+
+<div align="center">
+
+![物言AI宣传海报](docs/images/poster.png)
+
+</div>
+
 ## License
 
 MIT License
