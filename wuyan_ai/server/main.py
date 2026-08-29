@@ -193,6 +193,27 @@ async def health():
     }
 
 
+@app.get("/api/debug/env")
+async def debug_env():
+    """调试端点：返回 LLM 配置（不含密钥），用于确认线上环境变量。"""
+    from ..tools.llm import (
+        LLM_MODEL,
+        LLM_BASE_URL,
+        DISABLE_THINKING,
+        DEFAULT_MAX_TOKENS,
+        DEFAULT_TIMEOUT,
+    )
+
+    return {
+        "LLM_MODEL": LLM_MODEL,
+        "LLM_BASE_URL": LLM_BASE_URL,
+        "LLM_DISABLE_THINKING": DISABLE_THINKING,
+        "LLM_MAX_TOKENS": DEFAULT_MAX_TOKENS,
+        "LLM_TIMEOUT": DEFAULT_TIMEOUT,
+        "ANALYZER_CANDIDATES": os.environ.get("ANALYZER_CANDIDATES", "(unset)"),
+    }
+
+
 # ============================================================
 # 启动入口
 # ============================================================
