@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import AgentNode from './AgentNode'
+import { apiUrl } from '../lib/api'
 
 const STEPS = [
   { key: 'analyzing', label: '策略分析', icon: '🧠', weight: 45 },
@@ -74,7 +75,7 @@ export default function GeneratingView({ formData, onComplete }) {
         const controller = new AbortController()
         abortRef.current = controller
 
-        const response = await fetch('/api/generate', {
+        const response = await fetch(apiUrl('/api/generate'), {
           method: 'POST',
           body: formBody,
           signal: controller.signal,

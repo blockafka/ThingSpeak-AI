@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { resolveAssetUrl } from '../lib/api'
 
 export default function ImageGallery({ images }) {
   const [selected, setSelected] = useState(0)
@@ -16,7 +17,7 @@ export default function ImageGallery({ images }) {
 
   const handleDownload = async (url, index) => {
     try {
-      const res = await fetch(url)
+      const res = await fetch(resolveAssetUrl(url))
       const blob = await res.blob()
       const a = document.createElement('a')
       a.href = URL.createObjectURL(blob)
@@ -38,7 +39,7 @@ export default function ImageGallery({ images }) {
           </div>
         )}
         <img
-          src={images[selected]}
+          src={resolveAssetUrl(images[selected])}
           alt={labels[selected] || '产品图'}
           className={`w-full aspect-[3/4] object-cover transition-opacity duration-500 ${loaded[selected] ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setLoaded(prev => ({ ...prev, [selected]: true }))}
@@ -64,7 +65,7 @@ export default function ImageGallery({ images }) {
             }`}
           >
             <img
-              src={url}
+              src={resolveAssetUrl(url)}
               alt={labels[i] || `图${i + 1}`}
               className={`w-full aspect-square object-cover transition-opacity duration-500 ${loaded[i] ? 'opacity-100' : 'opacity-0'}`}
               onLoad={() => setLoaded(prev => ({ ...prev, [i]: true }))}
