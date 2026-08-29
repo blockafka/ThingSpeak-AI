@@ -150,9 +150,10 @@ async def _call_openai(
 
     client = _get_client(timeout=timeout)
 
-    # Qwen3 等模型的 thinking 模式：通过 chat_template_kwargs 关闭，避免推理耗时和 token 被思考占满
+    # 仅对 Qwen3 等需要关闭 thinking 的模型传 chat_template_kwargs；
+    # gpt-4o / Kimi 等 OpenAI 原生模型不传，避免代理报 Unrecognized request argument
     extra_body: dict = {}
-    if DISABLE_THINKING:
+    if DISABLE_THINKING and "Qwen" in model:
         extra_body["chat_template_kwargs"] = {"enable_thinking": False}
 
     for attempt in range(MAX_RETRIES + 1):
