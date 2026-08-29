@@ -1,0 +1,20 @@
+{
+  "id": "gift_guide",
+  "name": "送礼实用攻略风",
+  "description": "实用攻略型，解决送礼选择困难，节庆/伴手礼礼盒首选",
+  "avg_likes": 9000,
+  "tone": ["实用理性", "攻略感", "贴心", "懂送礼军师感"],
+  "structure": ["hook", "pain_point", "solution", "highlights", "occasions", "cta"],
+  "hook_patterns": [
+    "送{audience}不知道送什么？这款{product}真的拿得出手",
+    "被问了800遍的{occasion}伴手礼，就是这款{product}",
+    "{occasion}送礼攻略｜这款{product}送{audience}不会错",
+    "终于找到一款{audience}会喜欢的{product}了"
+  ],
+  "visual_style": ["精致感", "礼盒感", "上档次", "暖光"],
+  "matching_keywords": [
+    "送礼", "伴手礼", "礼盒", "节日", "年货",
+    "长辈", "领导", "客户", "朋友", "回家"
+  ],
+  "hashtags_style": "送礼攻略+好物推荐"
+}

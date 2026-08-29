@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+Thumbs.db
+
+# ===== 凭据与环境（绝不入库）=====
+.env
+.env.local
+.env.*.local
+**/storage_state*.json
+**/*.cookie
+**/auth/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+.venv311/
+venv/
+env/
+._*
+.pytest_cache/
+
+# ===== 运行时产物 =====
+legacy/hermes/runs/*
+!legacy/hermes/runs/.gitkeep
+wuyan_ai/data/generated/*
+!wuyan_ai/data/generated/.gitkeep
+wuyan_ai/data/runs/*
+!wuyan_ai/data/runs/.gitkeep
+
+# ===== 规划文件（本地工作记忆）=====
+task_plan.md
+progress.md
+findings.md
+.superpowers/
+.claude/
+*.sublime-project
+
+# ===== 前端 =====
+node_modules/
+web/dist/

@@ -1,0 +1,25 @@
+{
+  "name": "xhs-designers-daily",
+  "timezone": "Asia/Shanghai",
+  "cron": "0 9 * * *",
+  "skill": "xhs-content-collector",
+  "model_api_role": "Use the model to select the collection mode, inspect the summary, and report anomalies. Do not expose storage_state contents to the model.",
+  "command": [
+    "python",
+    "skills/xhs_content_collector/scripts/xhs_full_note_collect.py",
+    "--task",
+    "hermes/tasks/xhs_designers_daily.json",
+    "--output",
+    "${XHS_OUTPUT_ROOT}",
+    "--storage-state",
+    "${XHS_STORAGE_STATE_PATH}",
+    "--headless"
+  ],
+  "secrets": [
+    "XHS_STORAGE_STATE_PATH",
+    "OPENAI_API_KEY"
+  ],
+  "artifacts": [
+    "${XHS_OUTPUT_ROOT}"
+  ]
+}

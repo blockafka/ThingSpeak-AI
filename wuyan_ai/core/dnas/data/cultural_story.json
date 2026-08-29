@@ -1,0 +1,20 @@
+{
+  "id": "cultural_story",
+  "name": "文艺治愈故事风",
+  "description": "讲故事讲风土，治愈感强，非遗/老手艺/古法制作首选",
+  "avg_likes": 15000,
+  "tone": ["文艺细腻", "治愈感", "有温度", "娓娓道来"],
+  "structure": ["hook", "story", "craft", "feeling", "meaning", "cta"],
+  "hook_patterns": [
+    "在{place}，有一种味道，藏着老一辈的故事",
+    "第一次吃到{product}的时候，我想起了小时候",
+    "{place}的{product}，是时间的味道",
+    "做了{product}的老人说，这手艺快没人做了"
+  ],
+  "visual_style": ["胶片感", "暖光", "人物故事感", "慢节奏"],
+  "matching_keywords": [
+    "非遗", "古法", "手工", "老手艺", "传统",
+    "故事", "传承", "老人", "小时候", "年代"
+  ],
+  "hashtags_style": "治愈+地方文化+生活感悟"
+}

@@ -1,0 +1,23 @@
+[project]
+name = "wuyan-ai"
+version = "0.1.0"
+description = "物言 AI - 数据驱动的地方特产小红书爆款笔记生成器，爆款DNA实时进化"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "httpx[socks]>=0.27",
+    "python-dotenv>=1.0",
+    "openai>=1.0",
+    "Pillow>=10.0",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "python-multipart>=0.0.9",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["core*", "tools*", "server*"]

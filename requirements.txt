@@ -1,0 +1,12 @@
+# ===== AI 家居定制设计 Agent —— 统一依赖 =====
+# claude 层（Agent 核心 + server）
+pydantic>=2.0
+httpx[socks]>=0.27
+python-dotenv>=1.0
+openai>=1.0
+Pillow>=10.0
+fastapi>=0.110
+uvicorn[standard]>=0.29
+# 采集器 skill（浏览器自动化）
+playwright>=1.44
+# hermes 引擎仅用标准库（cron 自实现），无额外依赖

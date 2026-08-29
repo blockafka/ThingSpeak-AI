@@ -1,0 +1,109 @@
+{
+  "task_name": "xhs_designers_daily",
+  "max_notes_per_blogger": 1,
+  "max_candidates_per_blogger": 12,
+  "skip_existing": true,
+  "only_image_text": true,
+  "download_images": true,
+  "scroll_pages": 3,
+  "target_sleep_seconds": 2,
+  "candidate_sleep_seconds": 3,
+  "targets": [
+    {
+      "name": "上海设计师",
+      "url": "https://www.xiaohongshu.com/user/profile/689a097f00000000280287e1?xsec_token=YBV6WnFMS8yFXsRfDa-EfIu7ms9OAAOzNDLuAsg_gUqaI%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460689&share_id=704a95a141204218bb61f028e922ca1b&share_channel=wechat"
+    },
+    {
+      "name": "飞墨设计",
+      "url": "https://www.xiaohongshu.com/user/profile/5d0b32550000000016011d36?xsec_token=YBmfh4h_A9x-5qs5PPnyMifWHjc_QOYDoQoXfHoXrd020%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460708&share_id=2b196618b35a4f1598b8f424d683e10c&share_channel=wechat"
+    },
+    {
+      "name": "刘思彤设计师",
+      "url": "https://www.xiaohongshu.com/user/profile/66f969ca000000001d030e95?xsec_token=YB9wZMe1w6nV4O-4hUA-buZehnI1aQczQrVOihCrOmLqk%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460722&share_id=bf3763a5c92b44e5a2c3655770e4b113&share_channel=wechat"
+    },
+    {
+      "name": "成都宏福樘",
+      "url": "https://www.xiaohongshu.com/user/profile/59dcb4646eea880cbd5248a7?xsec_token=YBmLr_ES28Ii-HNgn0IDQ0S6Lm31LwSPtQL9U4EazmNjQ%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460740&share_id=34bac889a86b4df0a64b07e74983600c&share_channel=wechat"
+    },
+    {
+      "name": "六伊设计",
+      "url": "https://www.xiaohongshu.com/user/profile/606174b6000000000100b1da?xsec_token=YBC1ZXh5gyLscA2ntNdCKYnrh90UTWFhwUBxRse4hyw9M%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460777&share_id=60371f7888a2438a8c4d07a7026e1340&share_channel=wechat"
+    },
+    {
+      "name": "海狸酱",
+      "url": "https://www.xiaohongshu.com/user/profile/69119d980000000037030977?xsec_token=YB1s_eSGRly9BvHLYTblZyLiXQKSTwuBPzKlgy2UWkAig%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460787&share_id=e7a797b3a4224fdab4190c49261044ef&share_channel=wechat"
+    },
+    {
+      "name": "宸白空间",
+      "url": "https://www.xiaohongshu.com/user/profile/62cee0b6000000000303f497?xsec_token=YBEkVfpJGocmw81kMeFOkv4A9jz9eHOqqnvvDfP8fgj0s%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460824&share_id=040ad490bf5e4a66b9a421934a784f7b&share_channel=wechat"
+    },
+    {
+      "name": "境一所",
+      "url": "https://www.xiaohongshu.com/user/profile/66f8f063000000001d03276a?xsec_token=YBWkT9E1nxEUOv2M-t_GlnSXOG6f5mtI4_g9TRQFWJBUg%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782460850&share_id=f0f8c3db13474b5ea3434d095015b5a3&share_channel=wechat"
+    },
+    {
+      "name": "杭州上北设计",
+      "url": "https://www.xiaohongshu.com/user/profile/59c1e47444363b56e0560704?xsec_token=AB-OmZIAmjKnBbgsda64843-WbXe_hv9PSs9LA4gP1laE=&xsec_source=pc_note"
+    },
+    {
+      "name": "成都山顶设计",
+      "url": "https://www.xiaohongshu.com/user/profile/6a325d87000000000c000801?xsec_token=ABKXC98daOvvj-I4WZOAbUjowvmsDkGQz9dOGd_ehwUrM=&xsec_source=pc_note"
+    },
+    {
+      "name": "ArchDaily Official",
+      "url": "https://www.xiaohongshu.com/user/profile/62467b8c000000001000a0b6?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB-VrKIzNoN0tpI4Khr5bXA3CMoYbf5hV1qybGdl0sGPQ=&xsec_source=pc_search"
+    },
+    {
+      "name": "梅花鹿鹿",
+      "url": "https://www.xiaohongshu.com/user/profile/5d5c91a100000000010192ed?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABCJXY_DPEf2hS4BUM2y__KCoTw8xYrkytcUHHBiXCTtA=&xsec_source=pc_search"
+    },
+    {
+      "name": "BP",
+      "url": "https://www.xiaohongshu.com/user/profile/5e65d7730000000001004a3c?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABKp7T2p2Uv6d1CUeihtF4bUXUCQvm_aBnrMr-enplARc=&xsec_source=pc_search"
+    },
+    {
+      "name": "熊出逃（软装中）",
+      "url": "https://www.xiaohongshu.com/user/profile/60064c38000000000101ffc4?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABUf1wvM0V87tzAaHh2gMcaUwcGyW9PCPMRYmtkHTzNQo=&xsec_source=pc_search"
+    },
+    {
+      "name": "一口南瓜饼",
+      "url": "https://www.xiaohongshu.com/user/profile/5b6fc11938a98000011e750e?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABPe_hFusXIJ57hxjj8U7AxcPW3J2jwOFLPNwliUHAgyE=&xsec_source=pc_search"
+    },
+    {
+      "name": "打造一万个高级的家",
+      "url": "https://www.xiaohongshu.com/user/profile/66835b200000000003031f52?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB-fgvsocDRNnkvDgGdeV6OyLiIvQHJcvW_MzEQZ2R96g=&xsec_source=pc_search"
+    },
+    {
+      "name": "房子装累了",
+      "url": "https://www.xiaohongshu.com/user/profile/61eb6d580000000010004205?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB1m3vs66Nflaz4jk0LfiyAVk5lFJbjQbJzDl-4pKiNdk=&xsec_source=pc_search"
+    },
+    {
+      "name": "一宅设计",
+      "url": "https://www.xiaohongshu.com/user/profile/65f53e0e000000000500d9c3?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB2mdalTCb8l_Z6VBP4I-73LAH4m1InEerbt3xlHaD_AY=&xsec_source=pc_search"
+    },
+    {
+      "name": "ChenZc",
+      "url": "https://www.xiaohongshu.com/user/profile/5fdb36070000000001003965?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABpk5Aj83zMhrSGZOXO_m3Il4M4qywsLyjQ7Kt2xhV0kU=&xsec_source=pc_search"
+    },
+    {
+      "name": "C",
+      "url": "https://www.xiaohongshu.com/user/profile/5bfaaf6ff7e8b9315bdeb994?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB_SrTAJVAG6nlfd7YO9j69O8Zy9xojjDlc03jTylMoVo=&xsec_source=pc_search"
+    },
+    {
+      "name": "小米🏠",
+      "url": "https://www.xiaohongshu.com/user/profile/6526c69f000000002a02bc61?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABcPo-TiLt5Nbw-_lXfOOA6wNv2l_PoqqvvQ3lW4WkDTc=&xsec_source=pc_search"
+    },
+    {
+      "name": "鱼丸宅家日记",
+      "url": "https://www.xiaohongshu.com/user/profile/607acb4100000000010030ea?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABWDoKH1MWbojsyv2dMkgdBUSssh4TZtStWkqQCx-b_Ns=&xsec_source=pc_search"
+    },
+    {
+      "name": "大自然生态整家定制",
+      "url": "https://www.xiaohongshu.com/user/profile/697ffd32000000001d01b52e?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABo8B4a_dhKdJsfrEYpY9mfOZbdv4SvxmtEyS3yqaN2Tw=&xsec_source=pc_search"
+    },
+    {
+      "name": "无鱼夏也好",
+      "url": "https://www.xiaohongshu.com/user/profile/562df2409eb57854951d2576?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AByWBY_Vk22zy0Z_3XWv5LcfYrrakOQ_lLJnnQ--8LfZw=&xsec_source=pc_search"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "targets": [
+    {
+      "name": "厚来设计",
+      "url": "https://www.xiaohongshu.com/user/profile/64ca1343000000000b004d77?xsec_token=YBj7Jufq60DqMEwRcV76lg5EMBLHxupOcxXqRYYes8dYk%3D&xsec_source=app_share&xhsshare=&shareRedId=N0hEQTM3SDpLTThGSj0wNjY0QT00PD85&apptime=1782480608&share_id=d89fe99129754909b9fa1a5d3caddbb5&share_channel=wechat",
+      "timeout": 30,
+      "top_limit": 10,
+      "industry_keywords": [
+        "家居",
+        "家装",
+        "装修",
+        "定制",
+        "全屋定制",
+        "室内设计",
+        "空间设计",
+        "别墅",
+        "大平层",
+        "复式",
+        "客厅",
+        "卧室",
+        "餐厨",
+        "衣柜",
+        "橱柜",
+        "收纳"
+      ],
+      "target_sleep_seconds": 3,
+      "image_sleep_seconds": 1
+    }
+  ]
+}

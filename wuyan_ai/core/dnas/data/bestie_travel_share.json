@@ -1,0 +1,20 @@
+{
+  "id": "bestie_travel_share",
+  "name": "闺蜜旅游分享风",
+  "description": "像闺蜜分享旅游宝藏发现，轻松种草、亲和力强，游客伴手礼首选",
+  "avg_likes": 12000,
+  "tone": ["闺蜜聊天感", "口语化", "真诚分享", "带点小兴奋"],
+  "structure": ["hook", "scene", "product", "feeling", "gift", "cta"],
+  "hook_patterns": [
+    "来{place}玩之前真的不要只知道的宝藏{product}！！",
+    "被闺蜜按头安利的{product}，回来还在想念",
+    "在{place}随手买的{product}，回来搜了",
+    "{place}旅游最不后悔带回来的一样东西"
+  ],
+  "visual_style": ["自然光", "随手拍感", "暖色调", "生活化场景"],
+  "matching_keywords": [
+    "旅游", "旅行", "游客", "伴手礼", "景区", "打卡",
+    "闺蜜", "朋友", "出去玩", "带回", "宝藏"
+  ],
+  "hashtags_style": "生活化+种草感"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "weird_snack_review",
+  "name": "猎奇搞笑测评风",
+  "description": "搞笑测评+反差感，新奇小众/口味特殊特产首选",
+  "avg_likes": 20000,
+  "tone": ["幽默搞笑", "夸张表达", "测评感", "有梗"],
+  "structure": ["hook", "first_impression", "taste_test", "rating", "who_should_try", "cta"],
+  "hook_patterns": [
+    "这{product}的味道，我真的会",
+    "挑战{place}最奇怪的{product}，结果？",
+    "朋友从{place}带回来的{product}，第一口就了",
+    "{product}测评｜这味道也太{adjective}了吧"
+  ],
+  "visual_style": ["搞怪表情", "对比感", "明亮色彩", "reaction感"],
+  "matching_keywords": [
+    "奇怪", "奇葩", "重口味", "酸辣", "臭",
+    "测评", "试吃", "挑战", "小众", "冷门"
+  ],
+  "hashtags_style": "猎奇+搞笑测评+美食挑战"
+}
