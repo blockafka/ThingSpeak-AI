@@ -20,4 +20,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["core*", "tools*", "server*"]
+include = ["wuyan_ai*"]
+
+[tool.vercel]
+entrypoint = "wuyan_ai.server.main:app"
