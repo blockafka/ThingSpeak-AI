@@ -29,13 +29,35 @@ load_dotenv(_PROJECT_ROOT / ".env")
 
 logger = logging.getLogger(__name__)
 
+
+def _env_str(name: str, default: str = "") -> str:
+    val = os.getenv(name)
+    if val is None or not val.strip():
+        return default
+    return val.strip()
+
+
+def _env_int(name: str, default: int) -> int:
+    val = os.getenv(name)
+    if val is None or not val.strip():
+        return default
+    return int(val.strip())
+
+
+def _env_float(name: str, default: float) -> float:
+    val = os.getenv(name)
+    if val is None or not val.strip():
+        return default
+    return float(val.strip())
+
+
 # ---- 配置（从环境变量读取） ----
-LLM_MODEL = os.getenv("LLM_MODEL", "deepseek/deepseek-v4-pro")
-LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://vibetoken.cn/v1")
-LLM_API_KEY = os.getenv("LLM_API_KEY", "")
-MAX_RETRIES = int(os.getenv("LLM_MAX_RETRIES", "3"))
-DEFAULT_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "4096"))
-DEFAULT_TIMEOUT = float(os.getenv("LLM_TIMEOUT", "120"))
+LLM_MODEL = _env_str("LLM_MODEL", "deepseek/deepseek-v4-pro")
+LLM_BASE_URL = _env_str("LLM_BASE_URL", "https://vibetoken.cn/v1")
+LLM_API_KEY = _env_str("LLM_API_KEY")
+MAX_RETRIES = _env_int("LLM_MAX_RETRIES", 3)
+DEFAULT_MAX_TOKENS = _env_int("LLM_MAX_TOKENS", 4096)
+DEFAULT_TIMEOUT = _env_float("LLM_TIMEOUT", 120.0)
 
 # ---- OpenAI 客户端单例 ----
 _client: AsyncOpenAI | None = None
