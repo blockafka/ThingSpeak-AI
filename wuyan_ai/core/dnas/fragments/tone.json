@@ -1,0 +1,22 @@
+[
+  {"fragmentId":"tone_001","type":"tone","value":"第一人称、口语化、朋友推荐","state":"stable","score":0.98,"performanceScore":0.96,"freshnessScore":0.98,"confidenceScore":0.89,"evidenceIds":["mock_seed_tone_001"],"version":"1.0"},
+  {"fragmentId":"tone_002","type":"tone","value":"轻松兴奋、带一点惊喜","state":"rising","score":0.94,"performanceScore":0.92,"freshnessScore":0.96,"confidenceScore":0.84,"evidenceIds":["mock_seed_tone_002"],"version":"1.0"},
+  {"fragmentId":"tone_003","type":"tone","value":"本地人口吻、朴实真诚","state":"stable","score":0.93,"performanceScore":0.91,"freshnessScore":0.95,"confidenceScore":0.83,"evidenceIds":["mock_seed_tone_003"],"version":"1.0"},
+  {"fragmentId":"tone_004","type":"tone","value":"实用理性、像给朋友做攻略","state":"stable","score":0.92,"performanceScore":0.90,"freshnessScore":0.94,"confidenceScore":0.82,"evidenceIds":["mock_seed_tone_004"],"version":"1.0"},
+  {"fragmentId":"tone_005","type":"tone","value":"幽默夸张、带一点自嘲","state":"rising","score":0.91,"performanceScore":0.89,"freshnessScore":0.93,"confidenceScore":0.81,"evidenceIds":["mock_seed_tone_005"],"version":"1.0"},
+  {"fragmentId":"tone_006","type":"tone","value":"专业克制、成分党视角","state":"stable","score":0.90,"performanceScore":0.88,"freshnessScore":0.92,"confidenceScore":0.80,"evidenceIds":["mock_seed_tone_006"],"version":"1.0"},
+  {"fragmentId":"tone_007","type":"tone","value":"文艺细腻、有温度","state":"stable","score":0.89,"performanceScore":0.87,"freshnessScore":0.91,"confidenceScore":0.79,"evidenceIds":["mock_seed_tone_007"],"version":"1.0"},
+  {"fragmentId":"tone_008","type":"tone","value":"短句快节奏、信息密度高","state":"rising","score":0.88,"performanceScore":0.86,"freshnessScore":0.90,"confidenceScore":0.78,"evidenceIds":["mock_seed_tone_008"],"version":"1.0"},
+  {"fragmentId":"tone_009","type":"tone","value":"温柔耐心、照顾新手","state":"stable","score":0.87,"performanceScore":0.85,"freshnessScore":0.89,"confidenceScore":0.77,"evidenceIds":["mock_seed_tone_009"],"version":"1.0"},
+  {"fragmentId":"tone_010","type":"tone","value":"直接坦率、不吹不黑","state":"stable","score":0.86,"performanceScore":0.84,"freshnessScore":0.88,"confidenceScore":0.76,"evidenceIds":["mock_seed_tone_010"],"version":"1.0"},
+  {"fragmentId":"tone_011","type":"tone","value":"闺蜜聊天感、自然带种草","state":"stable","score":0.85,"performanceScore":0.83,"freshnessScore":0.87,"confidenceScore":0.75,"evidenceIds":["mock_seed_tone_011"],"version":"1.0"},
+  {"fragmentId":"tone_012","type":"tone","value":"军师感、替用户做选择","state":"rising","score":0.84,"performanceScore":0.82,"freshnessScore":0.86,"confidenceScore":0.74,"evidenceIds":["mock_seed_tone_012"],"version":"1.0"},
+  {"fragmentId":"tone_013","type":"tone","value":"观察记录感、像现场实况","state":"rising","score":0.83,"performanceScore":0.81,"freshnessScore":0.85,"confidenceScore":0.73,"evidenceIds":["mock_seed_tone_013"],"version":"1.0"},
+  {"fragmentId":"tone_014","type":"tone","value":"热点俏皮、不过度追梗","state":"stable","score":0.82,"performanceScore":0.80,"freshnessScore":0.84,"confidenceScore":0.72,"evidenceIds":["mock_seed_tone_014"],"version":"1.0"},
+  {"fragmentId":"tone_015","type":"tone","value":"有行动感、鼓励马上去试","state":"rising","score":0.81,"performanceScore":0.79,"freshnessScore":0.83,"confidenceScore":0.71,"evidenceIds":["mock_seed_tone_015"],"version":"1.0"},
+  {"fragmentId":"tone_016","type":"tone","value":"细节控、认真描述体感","state":"stable","score":0.80,"performanceScore":0.78,"freshnessScore":0.82,"confidenceScore":0.70,"evidenceIds":["mock_seed_tone_016"],"version":"1.0"},
+  {"fragmentId":"tone_017","type":"tone","value":"反差感、先怀疑后认可","state":"stable","score":0.79,"performanceScore":0.77,"freshnessScore":0.81,"confidenceScore":0.69,"evidenceIds":["mock_seed_tone_017"],"version":"1.0"},
+  {"fragmentId":"tone_018","type":"tone","value":"账本式清晰、数字说话","state":"rising","score":0.78,"performanceScore":0.76,"freshnessScore":0.80,"confidenceScore":0.68,"evidenceIds":["mock_seed_tone_018"],"version":"1.0"},
+  {"fragmentId":"tone_019","type":"tone","value":"轻吐槽、真实不端着","state":"stable","score":0.77,"performanceScore":0.75,"freshnessScore":0.79,"confidenceScore":0.67,"evidenceIds":["mock_seed_tone_019"],"version":"1.0"},
+  {"fragmentId":"tone_020","type":"tone","value":"挑战主持人、带一点游戏感","state":"rising","score":0.76,"performanceScore":0.74,"freshnessScore":0.78,"confidenceScore":0.66,"evidenceIds":["mock_seed_tone_020"],"version":"1.0"}
+]

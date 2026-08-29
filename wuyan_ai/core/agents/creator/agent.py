@@ -1,9 +1,9 @@
 """Agent · 内容创作器（Creator · 纯文本版本）
 
 职责：
-- 输入：DnaStrategyBrief（含DNA匹配 + 卖点 + 图片摘要）
-- 纯文本LLM生成：小红书笔记（标题+正文+标签）+ 6张图的内容建议/图注
-- LLM失败时退回规则兜底
+- 输入：DnaStrategyBrief（含六个细粒度 DNA 片段 + 卖点 + 图片摘要）
+- 纯文本 LLM 生成：小红书笔记（标题+正文+标签）+ 配图建议
+- LLM 失败时退回规则兜底
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from ...dnas import get_dna
+from ...dnas import get_fragment
 from ...schemas import (
     DnaStrategyBrief,
     GenerateResult,
@@ -45,17 +45,17 @@ async def create_content(brief: DnaStrategyBrief) -> GenerateResult:
 
 async def _llm_create(brief: DnaStrategyBrief) -> GenerateResult:
     """调用纯文本LLM生成内容。"""
-    dna_defs = []
-    for match in brief.dna_matches:
+    fragment_defs = []
+    for selection in brief.selected_fragments:
         try:
-            dna_defs.append(get_dna(match.dna_id))
+            fragment_defs.append(get_fragment(selection.fragment_id))
         except KeyError:
-            logger.warning("DNA不存在，跳过: %s", match.dna_id)
+            logger.warning("DNA片段不存在，跳过: %s", selection.fragment_id)
 
-    if not dna_defs:
-        raise ValueError("没有可用的DNA定义")
+    if not fragment_defs:
+        raise ValueError("没有可用的DNA片段")
 
-    user_prompt = build_user_prompt(brief.model_dump(), dna_defs)
+    user_prompt = build_user_prompt(brief.model_dump(), fragment_defs)
 
     response = await chat(
         system=SYSTEM_PROMPT,
@@ -96,7 +96,7 @@ async def _llm_create(brief: DnaStrategyBrief) -> GenerateResult:
     return GenerateResult(
         post=post,
         image_suggestions=image_suggestions,
-        dna_matches=brief.dna_matches,
+        selected_fragments=brief.selected_fragments,
         key_selling_points=brief.key_selling_points,
     )
 
@@ -205,6 +205,6 @@ def _rule_based_create(brief: DnaStrategyBrief) -> GenerateResult:
     return GenerateResult(
         post=post,
         image_suggestions=image_suggestions,
-        dna_matches=brief.dna_matches,
+        selected_fragments=brief.selected_fragments,
         key_selling_points=brief.key_selling_points,
     )

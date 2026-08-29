@@ -1,121 +1,168 @@
-"""
-爆款DNA库加载器 · 乡礼 Spark v1
+"""Fine-grained DNA fragment library.
 
-从 data/ 目录下的 JSON 文件加载所有内置DNA。
-DNA数据与代码分离，方便运营人员直接修改/新增DNA配置。
-
-6个内置DNA，覆盖95%以上地方特产小红书笔记场景。
-融合规则：主DNA 70% + 两个辅助DNA各15%
-DNA权重由analyzer Agent计算。
+The MVP keeps one JSON array per fragment dimension. The files contain seeded
+mock data only; extraction, staging-cache promotion, publication tracking and
+score updates are deliberately outside this module.
 """
 
 from __future__ import annotations
 
+import copy
 import json
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# DNA 类型别名
-# ---------------------------------------------------------------------------
-DnaDefinition = dict[str, Any]
+FragmentType = Literal[
+    "scene",
+    "valuePromise",
+    "hook",
+    "structure",
+    "tone",
+    "visualStyle",
+]
 
-# ---------------------------------------------------------------------------
-# 数据目录：data/ 与本文件同级
-# ---------------------------------------------------------------------------
-_DNA_DATA_DIR = Path(__file__).resolve().parent / "data"
+FRAGMENT_TYPES: tuple[FragmentType, ...] = (
+    "scene",
+    "valuePromise",
+    "hook",
+    "structure",
+    "tone",
+    "visualStyle",
+)
 
-# ---------------------------------------------------------------------------
-# 惰性加载缓存（启动时首次访问加载一次，后续直接用内存dict）
-# ---------------------------------------------------------------------------
-_library: dict[str, DnaDefinition] | None = None
+FragmentDefinition = dict[str, Any]
+DnaFragment = FragmentDefinition
+
+_DATA_DIR = Path(__file__).resolve().parent / "fragments"
+_TYPE_FILES: dict[FragmentType, str] = {
+    "scene": "scene.json",
+    "valuePromise": "value_promise.json",
+    "hook": "hook.json",
+    "structure": "structure.json",
+    "tone": "tone.json",
+    "visualStyle": "visual_style.json",
+}
+
+_library: dict[FragmentType, list[FragmentDefinition]] | None = None
 
 
-def _load_library() -> dict[str, DnaDefinition]:
-    """从 data/*.json 加载所有DNA到内存。"""
+def _validate_fragment(fragment: Any, expected_type: FragmentType, source: Path) -> FragmentDefinition:
+    if not isinstance(fragment, dict):
+        raise ValueError(f"{source.name} contains a non-object fragment")
+
+    required = ("fragmentId", "type", "value", "state", "score", "version")
+    missing = [key for key in required if key not in fragment]
+    if missing:
+        raise ValueError(f"{source.name} fragment missing fields: {', '.join(missing)}")
+    if fragment["type"] != expected_type:
+        raise ValueError(
+            f"{source.name} has type {fragment['type']!r}, expected {expected_type!r}"
+        )
+    if not isinstance(fragment["fragmentId"], str) or not fragment["fragmentId"]:
+        raise ValueError(f"{source.name} has an invalid fragmentId")
+    if not isinstance(fragment["value"], str) or not fragment["value"].strip():
+        raise ValueError(f"{source.name} has an empty value")
+    if not isinstance(fragment["score"], (int, float)) or not 0 <= fragment["score"] <= 1:
+        raise ValueError(f"{source.name} has an invalid score")
+    if fragment["state"] not in {"candidate", "rising", "stable", "watching", "retired"}:
+        raise ValueError(f"{source.name} has an invalid state")
+    if "evidenceIds" in fragment and not isinstance(fragment["evidenceIds"], list):
+        raise ValueError(f"{source.name} evidenceIds must be a list")
+    return fragment
+
+
+def _load_library() -> dict[FragmentType, list[FragmentDefinition]]:
     global _library
     if _library is not None:
         return _library
 
-    library: dict[str, DnaDefinition] = {}
-    if not _DNA_DATA_DIR.is_dir():
-        logger.error("DNA数据目录不存在: %s", _DNA_DATA_DIR)
-        _library = library
-        return _library
+    if not _DATA_DIR.is_dir():
+        raise RuntimeError(f"DNA fragment directory does not exist: {_DATA_DIR}")
 
-    for json_file in sorted(_DNA_DATA_DIR.glob("*.json")):
+    library: dict[FragmentType, list[FragmentDefinition]] = {}
+    seen_ids: set[str] = set()
+    for fragment_type in FRAGMENT_TYPES:
+        source = _DATA_DIR / _TYPE_FILES[fragment_type]
+        if not source.is_file():
+            raise RuntimeError(f"DNA fragment file does not exist: {source}")
         try:
-            with open(json_file, "r", encoding="utf-8") as f:
-                dna = json.load(f)
-            dna_id = dna.get("id")
-            if not dna_id:
-                logger.warning("跳过无效DNA文件（缺少id字段）: %s", json_file.name)
-                continue
-            library[dna_id] = dna
-        except (json.JSONDecodeError, OSError) as e:
-            logger.warning("加载DNA文件失败 %s: %s", json_file.name, e)
+            payload = json.loads(source.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise RuntimeError(f"Unable to load DNA fragment file {source}: {exc}") from exc
+        if not isinstance(payload, list):
+            raise ValueError(f"{source.name} must contain a JSON array")
+
+        fragments = []
+        for raw in payload:
+            fragment = _validate_fragment(raw, fragment_type, source)
+            fragment_id = fragment["fragmentId"]
+            if fragment_id in seen_ids:
+                raise ValueError(f"Duplicate fragmentId: {fragment_id}")
+            seen_ids.add(fragment_id)
+            fragments.append(fragment)
+        library[fragment_type] = fragments
 
     _library = library
-    logger.info("已加载 %d 个内置DNA", len(library))
+    logger.info(
+        "Loaded %d fine-grained DNA fragments across %d dimensions",
+        sum(len(items) for items in library.values()),
+        len(library),
+    )
     return _library
 
 
-def reload_library() -> dict[str, DnaDefinition]:
-    """强制重新加载DNA库（热更新用），返回新的库。"""
+def reload_library() -> dict[FragmentType, list[FragmentDefinition]]:
+    """Force a reload of the JSON fragment library."""
     global _library
     _library = None
     return _load_library()
 
 
-# ---------------------------------------------------------------------------
-# 对外 API
-# ---------------------------------------------------------------------------
-
-def get_all_dna_ids() -> list[str]:
-    """返回所有内置DNA ID列表。"""
-    return list(_load_library().keys())
-
-
-def get_dna(dna_id: str) -> DnaDefinition:
-    """根据ID获取单个DNA定义，不存在则抛出 KeyError。"""
+def list_fragments(fragment_type: FragmentType | None = None) -> list[FragmentDefinition]:
+    """Return all fragments, optionally limited to one dimension."""
     library = _load_library()
-    return library[dna_id]
+    if fragment_type is not None and fragment_type not in FRAGMENT_TYPES:
+        raise ValueError(f"Unknown fragment type: {fragment_type}")
+    if fragment_type is not None:
+        return copy.deepcopy(library[fragment_type])
+    return copy.deepcopy([fragment for items in library.values() for fragment in items])
 
 
-def list_dnas() -> list[DnaDefinition]:
-    """返回所有DNA定义列表。"""
-    return list(_load_library().values())
+def get_fragment(fragment_id: str) -> FragmentDefinition:
+    """Return a fragment by ID or raise ``KeyError``."""
+    for fragment in list_fragments():
+        if fragment["fragmentId"] == fragment_id:
+            return fragment
+    raise KeyError(fragment_id)
 
 
-def match_dnas_by_keywords(text: str) -> list[tuple[str, int]]:
-    """
-    基于关键词粗匹配，返回 [(dna_id, 命中次数)] 按命中数降序。
+def get_top_fragments(
+    fragment_type: FragmentType,
+    limit: int = 10,
+) -> list[FragmentDefinition]:
+    """Return the highest-scoring non-retired fragments in one dimension."""
+    if fragment_type not in FRAGMENT_TYPES:
+        raise ValueError(f"Unknown fragment type: {fragment_type}")
+    if limit < 0:
+        raise ValueError("limit must be non-negative")
 
-    这是规则兜底用的轻量匹配器，analyzer 会先用LLM精匹配，
-    LLM失败时退回此规则匹配。
-    """
-    scores: dict[str, int] = {}
-    text_lower = text.lower()
-
-    for dna_id, dna in _load_library().items():
-        keywords = dna.get("matching_keywords", [])
-        count = sum(1 for kw in keywords if kw and kw.lower() in text_lower)
-        if count > 0:
-            scores[dna_id] = count
-
-    return sorted(scores.items(), key=lambda x: x[1], reverse=True)
-
-
-def pick_default_dnas() -> list[tuple[str, float]]:
-    """
-    完全无信息时的默认DNA组合：闺蜜旅游分享 + 本地人推荐 + 送礼攻略。
-    返回 [(dna_id, weight)]，权重和为1.0。
-    """
-    return [
-        ("bestie_travel_share", 0.5),
-        ("local_recommend", 0.3),
-        ("gift_guide", 0.2),
+    fragments = [
+        fragment
+        for fragment in list_fragments(fragment_type)
+        if fragment.get("state") != "retired"
     ]
+    fragments.sort(key=lambda item: (-float(item["score"]), item["fragmentId"]))
+    return fragments[:limit]
+
+
+def get_top_fragments_by_type(limit: int = 10) -> dict[FragmentType, list[FragmentDefinition]]:
+    """Return a Top-K candidate pool for every required dimension."""
+    if limit < 0:
+        raise ValueError("limit must be non-negative")
+    return {
+        fragment_type: get_top_fragments(fragment_type, limit=limit)
+        for fragment_type in FRAGMENT_TYPES
+    }

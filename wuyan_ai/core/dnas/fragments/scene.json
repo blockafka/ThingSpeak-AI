@@ -1,0 +1,22 @@
+[
+  {"fragmentId":"scene_001","type":"scene","value":"下班后附近餐饮推荐","state":"stable","score":0.95,"performanceScore":0.93,"freshnessScore":0.97,"confidenceScore":0.86,"evidenceIds":["mock_seed_scene_001"],"version":"1.0"},
+  {"fragmentId":"scene_002","type":"scene","value":"周末城市短途打卡","state":"rising","score":0.94,"performanceScore":0.92,"freshnessScore":0.96,"confidenceScore":0.84,"evidenceIds":["mock_seed_scene_002"],"version":"1.0"},
+  {"fragmentId":"scene_003","type":"scene","value":"本地人日常回购","state":"stable","score":0.93,"performanceScore":0.91,"freshnessScore":0.95,"confidenceScore":0.83,"evidenceIds":["mock_seed_scene_003"],"version":"1.0"},
+  {"fragmentId":"scene_004","type":"scene","value":"午休快速解决一餐","state":"stable","score":0.92,"performanceScore":0.90,"freshnessScore":0.94,"confidenceScore":0.82,"evidenceIds":["mock_seed_scene_004"],"version":"1.0"},
+  {"fragmentId":"scene_005","type":"scene","value":"深夜加班后的夜宵解馋","state":"rising","score":0.91,"performanceScore":0.89,"freshnessScore":0.93,"confidenceScore":0.81,"evidenceIds":["mock_seed_scene_005"],"version":"1.0"},
+  {"fragmentId":"scene_006","type":"scene","value":"家庭周末聚餐","state":"stable","score":0.90,"performanceScore":0.88,"freshnessScore":0.92,"confidenceScore":0.80,"evidenceIds":["mock_seed_scene_006"],"version":"1.0"},
+  {"fragmentId":"scene_007","type":"scene","value":"朋友聚会点单","state":"stable","score":0.89,"performanceScore":0.87,"freshnessScore":0.91,"confidenceScore":0.79,"evidenceIds":["mock_seed_scene_007"],"version":"1.0"},
+  {"fragmentId":"scene_008","type":"scene","value":"一人食低负担","state":"rising","score":0.88,"performanceScore":0.86,"freshnessScore":0.90,"confidenceScore":0.78,"evidenceIds":["mock_seed_scene_008"],"version":"1.0"},
+  {"fragmentId":"scene_009","type":"scene","value":"旅行途中顺路尝鲜","state":"stable","score":0.87,"performanceScore":0.85,"freshnessScore":0.89,"confidenceScore":0.77,"evidenceIds":["mock_seed_scene_009"],"version":"1.0"},
+  {"fragmentId":"scene_010","type":"scene","value":"送礼伴手礼选择","state":"stable","score":0.86,"performanceScore":0.84,"freshnessScore":0.88,"confidenceScore":0.76,"evidenceIds":["mock_seed_scene_010"],"version":"1.0"},
+  {"fragmentId":"scene_011","type":"scene","value":"节日家庭餐桌","state":"stable","score":0.85,"performanceScore":0.83,"freshnessScore":0.87,"confidenceScore":0.75,"evidenceIds":["mock_seed_scene_011"],"version":"1.0"},
+  {"fragmentId":"scene_012","type":"scene","value":"学生党平价吃喝","state":"rising","score":0.84,"performanceScore":0.82,"freshnessScore":0.86,"confidenceScore":0.74,"evidenceIds":["mock_seed_scene_012"],"version":"1.0"},
+  {"fragmentId":"scene_013","type":"scene","value":"新店首发体验","state":"rising","score":0.83,"performanceScore":0.81,"freshnessScore":0.85,"confidenceScore":0.73,"evidenceIds":["mock_seed_scene_013"],"version":"1.0"},
+  {"fragmentId":"scene_014","type":"scene","value":"老字号复访","state":"stable","score":0.82,"performanceScore":0.80,"freshnessScore":0.84,"confidenceScore":0.72,"evidenceIds":["mock_seed_scene_014"],"version":"1.0"},
+  {"fragmentId":"scene_015","type":"scene","value":"菜市场烟火探店","state":"rising","score":0.81,"performanceScore":0.79,"freshnessScore":0.83,"confidenceScore":0.71,"evidenceIds":["mock_seed_scene_015"],"version":"1.0"},
+  {"fragmentId":"scene_016","type":"scene","value":"线上下单开箱","state":"stable","score":0.80,"performanceScore":0.78,"freshnessScore":0.82,"confidenceScore":0.70,"evidenceIds":["mock_seed_scene_016"],"version":"1.0"},
+  {"fragmentId":"scene_017","type":"scene","value":"办公室下午茶","state":"stable","score":0.79,"performanceScore":0.77,"freshnessScore":0.81,"confidenceScore":0.69,"evidenceIds":["mock_seed_scene_017"],"version":"1.0"},
+  {"fragmentId":"scene_018","type":"scene","value":"健身后轻食补给","state":"rising","score":0.78,"performanceScore":0.76,"freshnessScore":0.80,"confidenceScore":0.68,"evidenceIds":["mock_seed_scene_018"],"version":"1.0"},
+  {"fragmentId":"scene_019","type":"scene","value":"亲子周末尝鲜","state":"stable","score":0.77,"performanceScore":0.75,"freshnessScore":0.79,"confidenceScore":0.67,"evidenceIds":["mock_seed_scene_019"],"version":"1.0"},
+  {"fragmentId":"scene_020","type":"scene","value":"节气限定风味","state":"rising","score":0.76,"performanceScore":0.74,"freshnessScore":0.78,"confidenceScore":0.66,"evidenceIds":["mock_seed_scene_020"],"version":"1.0"}
+]

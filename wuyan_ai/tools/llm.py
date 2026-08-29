@@ -9,7 +9,7 @@
 - chat_with_images()  多模态：user 同时含 text + base64 图片
 - 内置 3 次重试 + 指数退避，调用方无需额外处理重试
 
-配置从项目根目录 .env 文件读取，环境变量：LLM_MODEL / LLM_BASE_URL / LLM_API_KEY 等。
+配置从项目根目录 .env 文件读取，默认使用 SiliconFlow 的 OpenAI 兼容接口；环境变量：LLM_MODEL / LLM_BASE_URL / LLM_API_KEY 等。
 """
 
 from __future__ import annotations
@@ -52,8 +52,8 @@ def _env_float(name: str, default: float) -> float:
 
 
 # ---- 配置（从环境变量读取） ----
-LLM_MODEL = _env_str("LLM_MODEL", "deepseek/deepseek-v4-pro")
-LLM_BASE_URL = _env_str("LLM_BASE_URL", "https://vibetoken.cn/v1")
+LLM_MODEL = _env_str("LLM_MODEL", "Pro/moonshotai/Kimi-K2.6")
+LLM_BASE_URL = _env_str("LLM_BASE_URL", "https://api.siliconflow.cn/v1")
 LLM_API_KEY = _env_str("LLM_API_KEY")
 MAX_RETRIES = _env_int("LLM_MAX_RETRIES", 3)
 DEFAULT_MAX_TOKENS = _env_int("LLM_MAX_TOKENS", 4096)

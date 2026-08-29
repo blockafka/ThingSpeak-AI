@@ -6,7 +6,7 @@ v1仅聚焦小红书单平台特产笔记生成。
 
 数据流（两Agent架构）：
     LocalFoodRequest
-        → analyzer 多模态策略分析  → DnaStrategyBrief（DNA匹配+卖点+图片摘要）
+        → analyzer 多模态策略分析  → DnaStrategyBrief（细粒度DNA组合+卖点+图片摘要）
         → creator 纯文本内容生成   → XiaohongshuPost + list[ImageSuggestion]
         → orchestrator 编排       → GenerateResult
 """
@@ -28,8 +28,15 @@ IMAGE_SUGGESTION_LABELS: list[str] = [
 ]
 MAX_IMAGE_SUGGESTIONS = 9
 
-# DNA角色
-DnaRole = Literal["primary", "supporting"]
+# 细粒度 DNA 维度
+FragmentType = Literal[
+    "scene",
+    "valuePromise",
+    "hook",
+    "structure",
+    "tone",
+    "visualStyle",
+]
 
 
 # ============================================================
@@ -47,22 +54,23 @@ class LocalFoodRequest(BaseModel):
 
 
 # ============================================================
-# DNA匹配结果
+# DNA片段选择结果
 # ============================================================
-class DnaMatch(BaseModel):
-    """单个DNA匹配结果。"""
-    dna_id: str = Field(..., description="DNA ID，如'gift_guide'")
-    dna_name: str = Field(..., description="DNA显示名称，如'送礼实用攻略风'")
-    role: DnaRole = Field(..., description="primary=主DNA，supporting=辅助DNA")
-    weight: float = Field(..., description="融合权重，0-1，所有DNA权重和为1.0")
-    reason: str = Field("", description="匹配理由，用于路演模式展示")
+class DnaFragmentSelection(BaseModel):
+    """AI从某个维度候选池中选出的一个细粒度DNA片段。"""
+    fragment_id: str = Field(..., description="片段ID，如'hook_001'")
+    type: FragmentType = Field(..., description="片段维度")
+    value: str = Field(..., description="片段内容")
+    score: float = Field(..., ge=0, le=1, description="预置候选分数")
+    version: str = Field("1.0", description="片段版本")
+    reason: str = Field("", description="AI选择该片段的理由")
 
 
 # ============================================================
 # 策略简报（analyzer输出 → 下游所有Agent的输入）
 # ============================================================
 class DnaStrategyBrief(BaseModel):
-    """传播策略简报：DNA匹配结果 + 核心卖点 + 避坑点 + 视觉建议。"""
+    """传播策略简报：细粒度DNA组合 + 核心卖点 + 避坑点 + 视觉建议。"""
     product_name: str
     product_category: str
     origin_place: str
@@ -70,8 +78,8 @@ class DnaStrategyBrief(BaseModel):
     selling_scene: Optional[str] = None
     user_note: Optional[str] = None
 
-    # DNA匹配结果（主1 + 辅2，权重和=1.0）
-    dna_matches: list[DnaMatch] = Field(default_factory=list)
+    # 每个维度各选1个片段，共6个
+    selected_fragments: list[DnaFragmentSelection] = Field(default_factory=list)
 
     # 核心卖点（3-5条）
     key_selling_points: list[str] = Field(default_factory=list)
@@ -109,8 +117,11 @@ class XiaohongshuPost(BaseModel):
 # 最终结果（orchestrator输出 → 前端展示）
 # ============================================================
 class GenerateResult(BaseModel):
-    """生成结果：小红书笔记 + 视觉建议 + DNA匹配信息（路演模式用）。"""
+    """生成结果：小红书笔记 + 视觉建议 + 细粒度DNA组合（路演模式用）。"""
     post: XiaohongshuPost
     image_suggestions: list[ImageSuggestion] = Field(default_factory=list)
-    dna_matches: list[DnaMatch] = Field(default_factory=list, description="DNA匹配结果，路演模式展示")
+    selected_fragments: list[DnaFragmentSelection] = Field(
+        default_factory=list,
+        description="每个维度选中的DNA片段，路演模式展示",
+    )
     key_selling_points: list[str] = Field(default_factory=list, description="核心卖点，路演模式展示")

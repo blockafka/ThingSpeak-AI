@@ -1,0 +1,22 @@
+[
+  {"fragmentId":"hook_001","type":"hook","value":"价格对比 + 结果反差","state":"stable","score":0.99,"performanceScore":0.97,"freshnessScore":0.99,"confidenceScore":0.90,"evidenceIds":["mock_seed_hook_001"],"version":"1.0"},
+  {"fragmentId":"hook_002","type":"hook","value":"先抛结论再给证据","state":"rising","score":0.94,"performanceScore":0.92,"freshnessScore":0.96,"confidenceScore":0.84,"evidenceIds":["mock_seed_hook_002"],"version":"1.0"},
+  {"fragmentId":"hook_003","type":"hook","value":"本地人身份背书","state":"stable","score":0.93,"performanceScore":0.91,"freshnessScore":0.95,"confidenceScore":0.83,"evidenceIds":["mock_seed_hook_003"],"version":"1.0"},
+  {"fragmentId":"hook_004","type":"hook","value":"反常识问题开场","state":"stable","score":0.92,"performanceScore":0.90,"freshnessScore":0.94,"confidenceScore":0.82,"evidenceIds":["mock_seed_hook_004"],"version":"1.0"},
+  {"fragmentId":"hook_005","type":"hook","value":"失败经历引出避坑","state":"rising","score":0.91,"performanceScore":0.89,"freshnessScore":0.93,"confidenceScore":0.81,"evidenceIds":["mock_seed_hook_005"],"version":"1.0"},
+  {"fragmentId":"hook_006","type":"hook","value":"数字清单开场","state":"stable","score":0.90,"performanceScore":0.88,"freshnessScore":0.92,"confidenceScore":0.80,"evidenceIds":["mock_seed_hook_006"],"version":"1.0"},
+  {"fragmentId":"hook_007","type":"hook","value":"朋友安利对话","state":"stable","score":0.89,"performanceScore":0.87,"freshnessScore":0.91,"confidenceScore":0.79,"evidenceIds":["mock_seed_hook_007"],"version":"1.0"},
+  {"fragmentId":"hook_008","type":"hook","value":"现场第一口反应","state":"rising","score":0.88,"performanceScore":0.86,"freshnessScore":0.90,"confidenceScore":0.78,"evidenceIds":["mock_seed_hook_008"],"version":"1.0"},
+  {"fragmentId":"hook_009","type":"hook","value":"前后对比展示","state":"stable","score":0.87,"performanceScore":0.85,"freshnessScore":0.89,"confidenceScore":0.77,"evidenceIds":["mock_seed_hook_009"],"version":"1.0"},
+  {"fragmentId":"hook_010","type":"hook","value":"质疑式开场","state":"stable","score":0.86,"performanceScore":0.84,"freshnessScore":0.88,"confidenceScore":0.76,"evidenceIds":["mock_seed_hook_010"],"version":"1.0"},
+  {"fragmentId":"hook_011","type":"hook","value":"别再买错的纠错开场","state":"stable","score":0.85,"performanceScore":0.83,"freshnessScore":0.87,"confidenceScore":0.75,"evidenceIds":["mock_seed_hook_011"],"version":"1.0"},
+  {"fragmentId":"hook_012","type":"hook","value":"终于找到答案的解决焦虑","state":"rising","score":0.84,"performanceScore":0.82,"freshnessScore":0.86,"confidenceScore":0.74,"evidenceIds":["mock_seed_hook_012"],"version":"1.0"},
+  {"fragmentId":"hook_013","type":"hook","value":"盲测猜结果","state":"rising","score":0.83,"performanceScore":0.81,"freshnessScore":0.85,"confidenceScore":0.73,"evidenceIds":["mock_seed_hook_013"],"version":"1.0"},
+  {"fragmentId":"hook_014","type":"hook","value":"借势热门话题切入","state":"stable","score":0.82,"performanceScore":0.80,"freshnessScore":0.84,"confidenceScore":0.72,"evidenceIds":["mock_seed_hook_014"],"version":"1.0"},
+  {"fragmentId":"hook_015","type":"hook","value":"时间限制制造紧迫感","state":"rising","score":0.81,"performanceScore":0.79,"freshnessScore":0.83,"confidenceScore":0.71,"evidenceIds":["mock_seed_hook_015"],"version":"1.0"},
+  {"fragmentId":"hook_016","type":"hook","value":"放大一个细节制造好奇","state":"stable","score":0.80,"performanceScore":0.78,"freshnessScore":0.82,"confidenceScore":0.70,"evidenceIds":["mock_seed_hook_016"],"version":"1.0"},
+  {"fragmentId":"hook_017","type":"hook","value":"低期待带来高惊喜","state":"stable","score":0.79,"performanceScore":0.77,"freshnessScore":0.81,"confidenceScore":0.69,"evidenceIds":["mock_seed_hook_017"],"version":"1.0"},
+  {"fragmentId":"hook_018","type":"hook","value":"直接展示账单","state":"rising","score":0.78,"performanceScore":0.76,"freshnessScore":0.80,"confidenceScore":0.68,"evidenceIds":["mock_seed_hook_018"],"version":"1.0"},
+  {"fragmentId":"hook_019","type":"hook","value":"真实吐槽转成推荐","state":"stable","score":0.77,"performanceScore":0.75,"freshnessScore":0.79,"confidenceScore":0.67,"evidenceIds":["mock_seed_hook_019"],"version":"1.0"},
+  {"fragmentId":"hook_020","type":"hook","value":"一句话挑战","state":"rising","score":0.76,"performanceScore":0.74,"freshnessScore":0.78,"confidenceScore":0.66,"evidenceIds":["mock_seed_hook_020"],"version":"1.0"}
+]

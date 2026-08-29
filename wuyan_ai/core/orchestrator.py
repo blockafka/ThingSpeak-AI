@@ -1,7 +1,7 @@
 """乡礼 Spark 主编排器（两Agent架构 · B方案）
 
 串联 v1 主流程：
-  1. analyzer — 多模态策略分析（看图+文字 → DNA匹配+卖点+图片摘要）
+  1. analyzer — 多模态策略分析（看图+文字 → 细粒度DNA组合+卖点+图片摘要）
   2. creator  — 纯文本内容生成（策略简报 → 小红书笔记+视觉建议）
 
 B方案：图片只在analyzer阶段看多模态一次，提取文字摘要后传给creator，
@@ -39,7 +39,7 @@ async def run_pipeline_sse(request: LocalFoodRequest) -> AsyncIterator[dict]:
         "data": {
             "step": "analyzing",
             "status": "start",
-            "message": "正在分析产品，匹配爆款DNA...",
+            "message": "正在分析产品，组合细粒度 DNA...",
         },
     }
     brief = await analyze_request(request)
@@ -48,7 +48,7 @@ async def run_pipeline_sse(request: LocalFoodRequest) -> AsyncIterator[dict]:
         "data": {
             "step": "analyzing",
             "status": "done",
-            "dna_matches": [m.model_dump() for m in brief.dna_matches],
+            "selected_fragments": [m.model_dump() for m in brief.selected_fragments],
             "key_selling_points": brief.key_selling_points,
             "image_summaries": brief.image_summaries,
         },

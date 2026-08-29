@@ -10,7 +10,8 @@ const STEPS = [
 const TIPS = {
   analyzing: [
     '正在读取产品图片，提取视觉特征...',
-    '正在匹配爆款 DNA 风格库...',
+    '正在从六个维度召回 DNA 片段...',
+    '正在让 AI 组合最合适的 DNA 片段...',
     '正在提炼核心卖点与避坑点...',
     '正在生成视觉拍摄方向...',
   ],
@@ -178,7 +179,7 @@ export default function GeneratingView({ formData, onComplete }) {
           status: s.key === 'analyzing' ? 'done' : s.status,
         })))
         // 展示中间结果预览
-        if (data.dna_matches) setDnaPreview(data.dna_matches)
+        if (data.selected_fragments) setDnaPreview(data.selected_fragments)
         if (data.key_selling_points) setSellingPointsPreview(data.key_selling_points)
       }
 
@@ -277,28 +278,28 @@ export default function GeneratingView({ formData, onComplete }) {
             <div><span className="text-slate-500">笔记：</span>小红书爆款标题 + 正文</div>
             <div><span className="text-slate-500">标签：</span>精准话题标签</div>
             <div><span className="text-slate-500">配图：</span>3-6 张图片拍摄建议</div>
-            <div><span className="text-slate-500">DNA：</span>爆款风格匹配说明</div>
+            <div><span className="text-slate-500">DNA：</span>六维片段组合说明</div>
           </div>
         </div>
       </div>
 
       {dnaPreview && dnaPreview.length > 0 && (
         <div className="bg-[#1e1a22] rounded-2xl p-5 border border-white/5 mt-4 animate-fade-in-up">
-          <h3 className="text-sm font-medium text-amber-300 mb-3">✨ 已匹配到的爆款 DNA</h3>
+          <h3 className="text-sm font-medium text-amber-300 mb-3">✨ 已组合的 DNA 片段</h3>
           <div className="space-y-2">
             {dnaPreview.map((dna, i) => (
               <div
-                key={dna.dna_id || i}
+                key={dna.fragment_id || i}
                 className="flex items-center justify-between rounded-xl bg-white/5 px-4 py-2.5 text-sm"
               >
                 <div className="flex items-center gap-2">
                   <span className="text-amber-300 font-medium">
-                    {dna.role === 'primary' ? '主风格' : '辅助风格'}
+                    {dna.type || 'DNA'}
                   </span>
-                  <span className="text-white">{dna.dna_name || dna.name || dna.dna_id}</span>
+                  <span className="text-white">{dna.value || dna.fragment_id}</span>
                 </div>
                 <span className="text-xs text-slate-400 tabular-nums">
-                  {Math.round((dna.weight || 0) * 100)}% 权重
+                  score {Number(dna.score || 0).toFixed(2)}
                 </span>
               </div>
             ))}

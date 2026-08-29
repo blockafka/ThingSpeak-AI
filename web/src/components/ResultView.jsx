@@ -1,8 +1,19 @@
 import { useState } from 'react'
 
-const DNA_ROLE_LABELS = {
-  primary: '主风格',
-  supporting: '辅助风格',
+const FRAGMENT_TYPE_LABELS = {
+  scene: '场景',
+  valuePromise: '价值承诺',
+  hook: '开头钩子',
+  structure: '内容结构',
+  tone: '表达语气',
+  visualStyle: '视觉风格',
+}
+
+const MAX_FRAGMENT_VALUE_LENGTH = 24
+
+function truncateFragmentValue(value) {
+  if (value.length <= MAX_FRAGMENT_VALUE_LENGTH) return value
+  return `${value.slice(0, MAX_FRAGMENT_VALUE_LENGTH)}...`
 }
 
 function InfoCard({ title, value, accent = 'amber' }) {
@@ -101,48 +112,42 @@ function ImageSuggestions({ suggestions }) {
   )
 }
 
-function DnaMatchPanel({ dnaMatches }) {
-  if (!dnaMatches || dnaMatches.length === 0) return null
+function DnaFragmentPanel({ fragments }) {
+  if (!fragments || fragments.length === 0) return null
 
   return (
     <div className="glass-card rounded-2xl p-6">
-      <h3 className="text-sm font-medium text-amber-300 mb-4">🧬 爆款 DNA 匹配</h3>
+      <h3 className="text-sm font-medium text-amber-300 mb-4">🧬 本次 DNA 片段组合</h3>
       <div className="space-y-2">
-        {dnaMatches.map((dna, i) => {
-          const isPrimary = dna.role === 'primary'
-          const weight = Math.round((dna.weight || 0) * 100)
+        {fragments.map((fragment, i) => {
+          const score = Number(fragment.score || 0)
+          const value = fragment.value || fragment.fragment_id || ''
           return (
             <div
-              key={dna.dna_id || i}
-              className={`rounded-xl px-4 py-3 border ${
-                isPrimary
-                  ? 'bg-amber-400/10 border-amber-400/30'
-                  : 'bg-white/5 border-white/10'
-              }`}
+              key={fragment.fragment_id || i}
+              className="rounded-xl px-4 py-3 border bg-white/5 border-white/10"
             >
-              <div className="flex items-center justify-between mb-1">
-                <div className="flex items-center gap-2">
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                    isPrimary
-                      ? 'bg-amber-400/20 text-amber-200'
-                      : 'bg-white/10 text-slate-300'
-                  }`}>
-                    {DNA_ROLE_LABELS[dna.role] || dna.role}
+              <div className="flex min-w-0 items-center justify-between gap-3 mb-1">
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="shrink-0 whitespace-nowrap text-xs font-medium px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-200">
+                    {FRAGMENT_TYPE_LABELS[fragment.type] || fragment.type}
                   </span>
-                  <span className="text-sm font-medium text-white">
-                    {dna.dna_name || dna.name || dna.dna_id}
+                  <span
+                    title={value}
+                    className="min-w-0 truncate text-sm font-medium text-white"
+                  >
+                    {truncateFragmentValue(value)}
                   </span>
                 </div>
-                <span className="text-xs text-slate-400 tabular-nums">{weight}% 权重</span>
+                <span className="shrink-0 whitespace-nowrap text-xs text-slate-400 tabular-nums">score {score.toFixed(2)}</span>
               </div>
-              {dna.reason && (
-                <p className="text-xs text-slate-400 leading-5 mt-1">{dna.reason}</p>
+              {fragment.reason && (
+                <p className="text-xs text-slate-400 leading-5 mt-1">{fragment.reason}</p>
               )}
-              {/* 权重进度条 */}
               <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
                 <div
-                  className={`h-full rounded-full ${isPrimary ? 'bg-amber-400' : 'bg-slate-400'}`}
-                  style={{ width: `${weight}%` }}
+                  className="h-full rounded-full bg-amber-400"
+                  style={{ width: `${Math.round(score * 100)}%` }}
                 />
               </div>
             </div>
@@ -158,7 +163,7 @@ export default function ResultView({ result, elapsed, onReset }) {
 
   const post = result.post || {}
   const imageSuggestions = result.image_suggestions || result.visual_suggestions || []
-  const dnaMatches = result.dna_matches || []
+  const selectedFragments = result.selected_fragments || []
   const keySellingPoints = result.key_selling_points || []
 
   const wordCount = (post.content || '').length
@@ -186,8 +191,8 @@ export default function ResultView({ result, elapsed, onReset }) {
       {/* 核心数据卡片 */}
       <div className="grid gap-4 md:grid-cols-3 mb-6">
         <InfoCard
-          title="主爆款 DNA"
-          value={dnaMatches[0]?.dna_name || dnaMatches[0]?.name || dnaMatches[0]?.dna_id || '—'}
+          title="DNA 片段"
+          value={selectedFragments.length > 0 ? `${selectedFragments.length} 个维度` : '—'}
           accent="rose"
         />
         <InfoCard
@@ -210,7 +215,7 @@ export default function ResultView({ result, elapsed, onReset }) {
 
         {/* 右侧：DNA匹配 + 卖点 */}
         <div className="space-y-6">
-          <DnaMatchPanel dnaMatches={dnaMatches} />
+          <DnaFragmentPanel fragments={selectedFragments} />
 
           {keySellingPoints.length > 0 && (
             <div className="glass-card rounded-2xl p-6">
