@@ -151,7 +151,7 @@
 1. **LLM配置（硬编码v1版本）**：
    - 模型：`doubao-seed-2-1-pro-260628`（支持Anthropic兼容格式多模态输入）
    - 接口地址：`https://ark.cn-beijing.volces.com/api/compatible/v1/messages`
-   - API Key：`73436379-2b5b-4dbd-ae99-5fba795b72cb`
+   - API Key：`<your_ark_api_key>`（敏感信息请通过环境变量注入，勿写入文档）
    - 重试机制：3次重试失败后自动走规则兜底
 2. **生图功能**：保留接口和代码结构，预留配置位，空实现占位，无断链即可
 3. **技术栈**：后端FastAPI+SSE+Pydantic v2，前端React+Vite+Tailwind CSS，复用原家装项目成熟的多Agent架构
