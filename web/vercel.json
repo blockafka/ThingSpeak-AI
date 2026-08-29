@@ -1,4 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": []
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://wuyan-ai.vercel.app/api/:path*"
+    },
+    {
+      "source": "/static/:path*",
+      "destination": "https://wuyan-ai.vercel.app/static/:path*"
+    }
+  ]
 }

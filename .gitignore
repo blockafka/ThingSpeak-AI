@@ -41,3 +41,5 @@ findings.md
 # ===== 前端 =====
 node_modules/
 web/dist/
+.vercel
+.env*
