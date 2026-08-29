@@ -1,5 +1,11 @@
 # 物言AI
 
+<div align="center">
+
+![物言AI宣传海报](docs/images/poster.png)
+
+</div>
+
 > 让地方特产小商家，也能在下班前发出一篇像样的小红书笔记。
 
 ![物言AI主界面](docs/images/main-hero.png)
@@ -311,14 +317,6 @@ wuyan-ai/
 ├── .env.example                # 环境变量示例
 └── start_server.sh             # 后端启动脚本
 ```
-
-## 宣传海报
-
-<div align="center">
-
-![物言AI宣传海报](docs/images/poster.png)
-
-</div>
 
 ## License
 
