@@ -1,4 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pip install -r requirements-vercel.txt"
+  "installCommand": "pip install -r requirements-vercel.txt",
+  "functions": {
+    "wuyan_ai/server/main.py": {
+      "maxDuration": 60
+    }
+  }
 }

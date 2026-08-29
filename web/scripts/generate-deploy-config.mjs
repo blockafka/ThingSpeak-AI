@@ -20,7 +20,7 @@ const repoRoot = path.resolve(webRoot, '..')
 const backend = (
   process.env.BACKEND_URL ||
   process.env.VITE_API_BASE_URL ||
-  'https://yingx-o5ua.vercel.app'
+  ''
 ).replace(/\/$/, '')
 
 const vercelConfig = {
