@@ -17,7 +17,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const webRoot = path.resolve(__dirname, '..')
 const repoRoot = path.resolve(webRoot, '..')
 
-const backend = (process.env.BACKEND_URL || '').replace(/\/$/, '')
+const backend = (
+  process.env.BACKEND_URL ||
+  process.env.VITE_API_BASE_URL ||
+  'https://yingx-o5ua.vercel.app'
+).replace(/\/$/, '')
 
 const vercelConfig = {
   $schema: 'https://openapi.vercel.sh/vercel.json',
@@ -31,7 +35,7 @@ if (backend) {
   )
   console.log(`[deploy-config] Vercel API proxy -> ${backend}`)
 } else {
-  console.log('[deploy-config] BACKEND_URL 未设置，跳过 Vercel API 反代（可用 VITE_API_BASE_URL 直连）')
+  console.log('[deploy-config] 未配置后端地址，跳过 API 反代')
 }
 
 fs.writeFileSync(
