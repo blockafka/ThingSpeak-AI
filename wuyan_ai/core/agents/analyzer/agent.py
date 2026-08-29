@@ -18,7 +18,8 @@ from ._prompts import SYSTEM_PROMPT, build_user_prompt
 
 logger = logging.getLogger(__name__)
 
-_MAX_CANDIDATES_PER_TYPE = 5
+# 每个维度召回候选数：本地默认 Top 5；云端可设 ANALYZER_CANDIDATES=3 压延迟
+_MAX_CANDIDATES_PER_TYPE = int(os.environ.get("ANALYZER_CANDIDATES", "5"))
 
 
 async def analyze_request(request: LocalFoodRequest) -> DnaStrategyBrief:
