@@ -57,14 +57,14 @@ async def _llm_analyze(
             user_text=user_prompt,
             image_urls=[_path_to_url(path) for path in image_paths[:3]],
             temperature=0.7,
-            max_tokens=2048,
+            max_tokens=3096,
         )
     else:
         response = await chat(
             system=SYSTEM_PROMPT,
             user=user_prompt,
             temperature=0.7,
-            max_tokens=2048,
+            max_tokens=3096,
         )
 
     result = _parse_llm_response(response, candidate_pools)

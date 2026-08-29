@@ -61,7 +61,7 @@ async def _llm_create(brief: DnaStrategyBrief) -> GenerateResult:
         system=SYSTEM_PROMPT,
         user=user_prompt,
         temperature=0.8,
-        max_tokens=4096,
+        max_tokens=3096,
     )
 
     result = _parse_llm_response(response)

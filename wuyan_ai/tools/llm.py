@@ -58,6 +58,7 @@ LLM_API_KEY = _env_str("LLM_API_KEY")
 MAX_RETRIES = _env_int("LLM_MAX_RETRIES", 3)
 DEFAULT_MAX_TOKENS = _env_int("LLM_MAX_TOKENS", 4096)
 DEFAULT_TIMEOUT = _env_float("LLM_TIMEOUT", 120.0)
+DISABLE_THINKING = _env_str("LLM_DISABLE_THINKING", "").lower() in ("1", "true", "yes", "on")
 
 # ---- OpenAI 客户端单例 ----
 _client: AsyncOpenAI | None = None
@@ -149,6 +150,11 @@ async def _call_openai(
 
     client = _get_client(timeout=timeout)
 
+    # Qwen3 等模型的 thinking 模式：通过 chat_template_kwargs 关闭，避免推理耗时和 token 被思考占满
+    extra_body: dict = {}
+    if DISABLE_THINKING:
+        extra_body["chat_template_kwargs"] = {"enable_thinking": False}
+
     for attempt in range(MAX_RETRIES + 1):
         try:
             resp = await client.chat.completions.create(
@@ -156,6 +162,7 @@ async def _call_openai(
                 messages=messages,
                 temperature=temperature,
                 max_tokens=max_tokens,
+                extra_body=extra_body or None,
             )
             content = resp.choices[0].message.content
             if content:
